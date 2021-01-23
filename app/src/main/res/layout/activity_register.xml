@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterActivity">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/image_profile"
+        android:onClick="openGallery"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_gravity="center"
+        android:src="@drawable/user"
+        android:layout_margin="@dimen/_10sdp"
+        android:layout_height="@dimen/_100sdp" />
+
+    <EditText
+        android:id="@+id/register_et_email"
+        android:hint="Email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:inputType="textAutoComplete"/>
+
+    <EditText
+        android:id="@+id/register_et_password"
+        android:hint="Password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:inputType="textWebPassword"/>
+
+    <EditText
+        android:id="@+id/register_et_confirm_password"
+        android:hint="Password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:inputType="textWebPassword"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        android:text="Register"
+        android:onClick="register"
+        android:layout_height="wrap_content"/>
+
+
+</LinearLayout>

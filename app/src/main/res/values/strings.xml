@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Order App</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="sign_up_by_email">Sign Up By email</string>
+    <string name="sign_up_by_phone">Sign Up By Phone</string>
+    <string name="signout">SignOut</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="verify_code">Verify Code</string>
+    <string name="code">Code</string>
+    <string name="resend_code">ReSend Code</string>
+    <string name="send_code">Send Code</string>
+</resources>
