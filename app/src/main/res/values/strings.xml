@@ -10,4 +10,24 @@
     <string name="code">Code</string>
     <string name="resend_code">ReSend Code</string>
     <string name="send_code">Send Code</string>
+    <string name="order_description">Order description</string>
+    <string name="order_date">Order Date</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="password">Password</string>
+    <string name="phone">Phone</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="username">User Name</string>
+    <string name="update">Update</string>
+    <string name="todo">To Do</string>
+    <string name="add_order">Add Order</string>
+    <string name="request_description">Description</string>
+    <string name="first_location">First Location</string>
+    <string name="last_location">Last Location</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="order_accept">Order Accept</string>
+    <string name="okay">OK</string>
+    <string name="logout">LogOut</string>
+    <string name="profile">Profile</string>
 </resources>

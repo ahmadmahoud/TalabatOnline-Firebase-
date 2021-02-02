@@ -1,9 +1,12 @@
 package com.example.orderapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -36,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void signOut(View view) {
+    public void signOut() {
         firebaseAuth.signOut();
         if (firebaseAuth.getCurrentUser() == null) {
             // go to login screen
@@ -44,5 +47,27 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id=item.getItemId();
+        if (id==R.id.item_profile){
+            openProfile();
+        }else if(id==R.id.item_logout){
+            signOut();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void openProfile() {
+        startActivity(new Intent(this,ProfileActivity.class));
     }
 }
