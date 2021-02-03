@@ -168,7 +168,6 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-
     public void openGallery(View view) {
 //        Intent intent = new Intent();
 //        intent.setAction(Intent.ACTION_PICK);

@@ -21,8 +21,7 @@
             android:label="Register"/>
         <activity android:name=".MainActivity"
             android:label="Home"/>
-        <activity android:name=".LoginActivity"
-            android:label="Log IN">
+        <activity android:name=".LoginActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
