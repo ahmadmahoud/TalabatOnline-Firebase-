@@ -54,7 +54,9 @@ public class ProfileActivity extends AppCompatActivity {
         editTextPhone = findViewById(R.id.profile_et_phone);
         progressBar = findViewById(R.id.profile_progress_bar);
         buttonUpdate = findViewById(R.id.profile_btn_update);
+        progressBar.setVisibility(View.VISIBLE);
         getUserData();
+        progressBar.setVisibility(View.GONE);
         circleImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,7 +96,8 @@ public class ProfileActivity extends AppCompatActivity {
         editTextPhone.setText(userData.getPhone());
         Picasso.get().load(userData.getImageUrl()).placeholder(R.drawable.user).into(circleImageView);
     }
-    private void updateUserData() { //3- نبعت الداتا الجديدة (update data(Text Only)) عنطريقHashMap
+    //3- نبعت الداتا الجديدة (update data(Text Only)) عنطريقHashMap
+    private void updateUserData() {
         String name = editTextUserName.getText().toString().trim();
         String phone = editTextPhone.getText().toString().trim();
         if (name.isEmpty()) {
@@ -138,12 +141,14 @@ public class ProfileActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 imageUri = result.getUri();
                 circleImageView.setImageURI(imageUri);
+                progressBar.setVisibility(View.VISIBLE);
                 uploadImage();
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE)  {
                 Exception error = result.getError();
                 error.getLocalizedMessage();
             }
         }
+
     }
     //3- نبعت الصورة الجديدة بال(uid) فى storageReference
     private void uploadImage() {
@@ -196,5 +201,6 @@ public class ProfileActivity extends AppCompatActivity {
                         Toast.makeText(ProfileActivity.this, "Data Updated", Toast.LENGTH_SHORT).show();
                     }
                 });
+        progressBar.setVisibility(View.GONE);
     }
 }

@@ -125,22 +125,23 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/user_order_state"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_10sdp"
-            android:hint="Order state">
+            android:hint="@string/order_state">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/order_details_state"
+                android:id="@+id/order_user_details_state"
                 android:layout_width="match_parent"
                 android:enabled="false"
-                android:layout_height="wrap_content"
-                android:inputType="text" />
+                android:layout_height="wrap_content" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/order_details_is_finish"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -148,7 +149,7 @@
             android:hint="Order finished">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/order_details_is_finish"
+
                 android:layout_width="match_parent"
                 android:enabled="false"
                 android:layout_height="wrap_content"

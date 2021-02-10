@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -38,7 +39,7 @@ public class RegisterActivity extends AppCompatActivity {
     // initialisation StorageReference to can upload imageProfile
     private final StorageReference storageReference = FirebaseStorage.getInstance().getReference();
     // initialisation FirebaseFireStore to can upload UserData
-    private final FirebaseFirestore firestore =FirebaseFirestore.getInstance();
+    private final FirebaseFirestore firestore = FirebaseFirestore.getInstance();
     //initialisation User Data
     private CircleImageView imageProfile;
     private Uri imageUri = null;
@@ -47,6 +48,8 @@ public class RegisterActivity extends AppCompatActivity {
     private String confirmPassword = "";
     private String name = "";
     private String phone = "";
+    private RadioButton radioButton;
+    private boolean provider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,14 +61,20 @@ public class RegisterActivity extends AppCompatActivity {
         imageProfile = findViewById(R.id.register_image);
         editTextName = findViewById(R.id.register_et_name);
         editTextPhone = findViewById(R.id.register_et_phone);
+        radioButton = findViewById(R.id.radioButton_provider);
+
     }
 
     public void register(View view) {
+    //Initialisation register fields (email, password, confirm password, name, phone)
         email = editTextEmail.getText().toString().trim();
         password = editTextPassword.getText().toString().trim();
         confirmPassword = editTextConfirmPassword.getText().toString().trim();
         name = editTextName.getText().toString().trim();
         phone = editTextPhone.getText().toString().trim();
+
+        // Initialisation radioButton for navigation (client Or Provider)
+        provider = radioButton.isChecked();
         // check validation
         if (email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty() || name.isEmpty() || phone.isEmpty()) {
             Toast.makeText(this, "Please Fill Data", Toast.LENGTH_SHORT).show();
@@ -96,78 +105,18 @@ public class RegisterActivity extends AppCompatActivity {
                     }
                 });
     }
-
-    private void uploadImage() {
-        String uid = Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid();
-        storageReference.child("photos").child(uid).putFile(imageUri)
-                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        Toast.makeText(RegisterActivity.this, "Image Uploaded Success", Toast.LENGTH_SHORT).show();
-                        getImageUrl(uid);
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-
-                    }
-                });
-
-//        String uid = Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid();
-//        storageReference.child("photos").child(uid).putFile(imageUri)  //first child name of storage folder =>  name of picture (before) putFile
-//        .addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
-//            @Override
-//            public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-//                if (task.isSuccessful()){
-//                    Toast.makeText(RegisterActivity.this, "Image uploaded", Toast.LENGTH_SHORT).show();
-//                } else {
-//                    String errorMessage = Objects.requireNonNull(task.getException()).getLocalizedMessage();
-//                    Toast.makeText(RegisterActivity.this, errorMessage, Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        });
+    private void navigate() {
+        if (provider){
+            startActivity(new Intent(RegisterActivity.this, UserMainActivity.class));
+        }else{
+            startActivity(new Intent(RegisterActivity.this, ProviderMainActivity.class));
+        }
+        finish();
     }
-
-    private void getImageUrl(String uid) {
-        storageReference.child("photos").child(uid).getDownloadUrl()
-                .addOnCompleteListener(new OnCompleteListener<Uri>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Uri> task) {
-                        if(task.isSuccessful()){
-                            String imageUrl = task.getResult().toString();
-                            Log.i(TAG, "onComplete: "+imageUrl);
-                            uploadUserData(imageUrl);
-                        }else {
-                            String errorMessage = Objects.requireNonNull(task.getException()).getLocalizedMessage();
-                            Log.i(TAG, "onComplete: " + errorMessage);
-                            Toast.makeText(RegisterActivity.this, errorMessage, Toast.LENGTH_SHORT).show();
-
-                        }
-                    }
-                });
-    }
-
-    private void uploadUserData(String imageUrl) {
-        UserData userData =new UserData(email,name,phone,imageUrl);//ctrl + p
-        firestore.collection("Users")
-                .document(firebaseAuth.getCurrentUser().getUid())
-                .set(userData)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        startActivity(new Intent(RegisterActivity.this,MainActivity.class));
-                        finish();
-                    }
-                })
-        .addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-
-            }
-        });
-    }
-
+    // 4- عشان نعرف نبعت الصورة الجديدة لازم نعمل 5 خطوات
+    //___________________________________________________________________
+    //1- نفتح الجالارى عن طريق (image-cropper library)
+    // start picker to get image for cropping and then use the image in cropping activity
     public void openGallery(View view) {
 //        Intent intent = new Intent();
 //        intent.setAction(Intent.ACTION_PICK);
@@ -177,7 +126,7 @@ public class RegisterActivity extends AppCompatActivity {
                 .setGuidelines(CropImageView.Guidelines.ON)
                 .start(this);
     }
-
+    //2-Override onActivityResult method in your activity to get crop result
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -195,11 +144,80 @@ public class RegisterActivity extends AppCompatActivity {
             }
         }
     }
+    //3- نبعت الصورة الجديدة بال(uid) فى storageReference
+    private void uploadImage() {
+        String uid = Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid();
+        storageReference.child("photos").child(uid).putFile(imageUri)
+                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        Toast.makeText(RegisterActivity.this, "Image Uploaded Success", Toast.LENGTH_SHORT).show();
+                        getImageUrl(uid);
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+
+                    }
+                });
+//        String uid = Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid();
+//        storageReference.child("photos").child(uid).putFile(imageUri)  //first child name of storage folder =>  name of picture (before) putFile
+//        .addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+//                if (task.isSuccessful()){
+//                    Toast.makeText(RegisterActivity.this, "Image uploaded", Toast.LENGTH_SHORT).show();
+//                } else {
+//                    String errorMessage = Objects.requireNonNull(task.getException()).getLocalizedMessage();
+//                    Toast.makeText(RegisterActivity.this, errorMessage, Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        });
+    }
+    //4-نجيب ال(url) الصورة الجديدة من ال storageReference
+    private void getImageUrl(String uid) {
+        storageReference.child("photos").child(uid).getDownloadUrl()
+                .addOnCompleteListener(new OnCompleteListener<Uri>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Uri> task) {
+                        if (task.isSuccessful()) {
+                            String imageUrl = task.getResult().toString();
+                            Log.i(TAG, "onComplete: " + imageUrl);
+                            uploadUserData(imageUrl);
+                        } else {
+                            String errorMessage = Objects.requireNonNull(task.getException()).getLocalizedMessage();
+                            Log.i(TAG, "onComplete: " + errorMessage);
+                            Toast.makeText(RegisterActivity.this, errorMessage, Toast.LENGTH_SHORT).show();
+
+                        }
+                    }
+                });
+    }
+    //5- كدة احنا جاهزين ب URL الصورة خلاص و نبعتها لل firestore مع ال UserData فى الكونستراكتور
+    private void uploadUserData(String imageUrl) {
+        UserData userData = new UserData(email, name, phone, imageUrl,provider);//ctrl + p
+        firestore.collection("Users")
+                .document(firebaseAuth.getCurrentUser().getUid())
+                .set(userData)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        navigate();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+
+                    }
+                });
+    }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
+        startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
     }
 
 }

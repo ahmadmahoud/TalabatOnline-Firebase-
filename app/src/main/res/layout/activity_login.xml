@@ -43,6 +43,7 @@
         app:boxCornerRadiusTopEnd="@dimen/_25sdp"
         app:boxCornerRadiusBottomStart="@dimen/_25sdp"
         android:layout_marginTop="@dimen/_10sdp"
+        app:passwordToggleEnabled="true"
         app:boxStrokeColor="@color/purple_700"
         tools:layout_editor_absoluteX="20dp">
 

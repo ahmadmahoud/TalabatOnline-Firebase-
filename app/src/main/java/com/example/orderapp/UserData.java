@@ -4,17 +4,22 @@ package com.example.orderapp;
 
 public class UserData {
     private String email,name,phone,imageUrl;
+    private boolean provider;
 
-    public UserData() {
-    }
-
-    public UserData(String email, String name, String phone, String imageUrl) {
+    public UserData(String email, String name, String phone, String imageUrl, boolean provider) {
         this.email = email;
         this.name = name;
         this.phone = phone;
         this.imageUrl = imageUrl;
-
+        this.provider = provider;
     }
+
+    public UserData() {
+    }
+
+
+
+
 
     public String getEmail() {
         return email;
@@ -48,6 +53,14 @@ public class UserData {
         this.imageUrl = imageUrl;
     }
 
+    public boolean isProvider() {
+        return provider;
+    }
+
+    public void setProvider(boolean provider) {
+        this.provider = provider;
+    }
+
     @Override
     public String toString() {
         return "UserData{" +
@@ -55,6 +68,7 @@ public class UserData {
                 ", name='" + name + '\'' +
                 ", phone='" + phone + '\'' +
                 ", imageUrl='" + imageUrl + '\'' +
+                ", provider=" + provider +
                 '}';
     }
 }

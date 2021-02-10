@@ -30,4 +30,11 @@
     <string name="okay">OK</string>
     <string name="logout">LogOut</string>
     <string name="profile">Profile</string>
+    <string name="provider">Provider</string>
+    <string name="client">Client</string>
+    <string name="finished">finished</string>
+    <string name="order_state">Order state</string>
+    <string name="accept">Accept</string>
+    <string name="my_orders">My Orders</string>
+    <string name="The_Order_Accepted">The Order Accepted</string>
 </resources>

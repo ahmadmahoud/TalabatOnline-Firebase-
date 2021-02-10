@@ -127,6 +127,39 @@
         android:layout_margin="10dp"
         android:onClick="register"
         android:text="@string/register" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <RadioButton
+                android:id="@+id/radioButton_client"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_30sdp"
+                android:text="@string/client"
+                android:textStyle="bold"
+                android:textAllCaps="true"/>
+
+            <RadioButton
+                android:id="@+id/radioButton_provider"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                android:text="@string/provider" />
+        </RadioGroup>
+    </LinearLayout>
+
+
+
 
 
 </LinearLayout>
