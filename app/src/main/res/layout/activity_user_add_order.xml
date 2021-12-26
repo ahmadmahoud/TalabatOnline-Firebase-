@@ -21,7 +21,7 @@
             app:boxCornerRadiusTopEnd="@dimen/_25sdp"
             app:boxCornerRadiusBottomStart="@dimen/_25sdp"
             android:layout_margin="@dimen/_10sdp"
-            android:hint="@string/request_description">
+            android:hint="هل السياره بسائق ام لا ؟">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/add_order_request_description"
@@ -40,7 +40,7 @@
             app:boxStrokeWidthFocused="@dimen/_3sdp"
             app:boxCornerRadiusTopEnd="@dimen/_25sdp"
             app:boxCornerRadiusBottomStart="@dimen/_25sdp"
-            android:hint="@string/phone_number">
+            android:hint="ادخل رقم هاتفك">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/add_order_phone_number"
@@ -59,7 +59,7 @@
             app:boxStrokeWidthFocused="@dimen/_3sdp"
             app:boxCornerRadiusTopEnd="@dimen/_25sdp"
             app:boxCornerRadiusBottomStart="@dimen/_25sdp"
-            android:hint="@string/first_location">
+            android:hint="موقع الاستلام">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/add_order_first_location"
@@ -78,7 +78,7 @@
             app:boxStrokeWidthFocused="@dimen/_3sdp"
             app:boxCornerRadiusTopEnd="@dimen/_25sdp"
             app:boxCornerRadiusBottomStart="@dimen/_25sdp"
-            android:hint="@string/last_location">
+            android:hint="موقع التسليم">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/add_order_last_location"
@@ -97,7 +97,7 @@
             app:boxStrokeWidthFocused="@dimen/_3sdp"
             app:boxCornerRadiusTopEnd="@dimen/_25sdp"
             app:boxCornerRadiusBottomStart="@dimen/_25sdp"
-            android:hint="@string/date">
+            android:hint="مدة التاجير">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/add_order_date"
@@ -117,19 +117,17 @@
             app:boxStrokeWidthFocused="@dimen/_3sdp"
             app:boxCornerRadiusTopEnd="@dimen/_25sdp"
             app:boxCornerRadiusBottomStart="@dimen/_25sdp"
-            android:hint="@string/time">
+            android:hint="اسم المستلم">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/add_order_time"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="time" />
+                android:layout_height="wrap_content" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
             app:icon="@drawable/ic_add"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:id="@+id/add_order_material_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -138,7 +136,7 @@
             android:elevation="@dimen/_2sdp"
             android:shadowRadius="@integer/google_play_services_version"
             app:iconGravity="textStart"
-            android:text="@string/add_order"
+            android:text="تقديم طلب"
             android:textAllCaps="false"
             app:cornerRadius="@dimen/_10sdp" />
 

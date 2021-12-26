@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".LoginActivity">
+
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_320sdp"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/logincar" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout1"
@@ -18,7 +32,7 @@
         app:boxCornerRadiusTopEnd="@dimen/_25sdp"
         app:boxCornerRadiusBottomStart="@dimen/_25sdp"
         android:layout_marginTop="@dimen/_10sdp"
-        app:boxStrokeColor="@color/purple_700"
+        app:boxStrokeColor="@color/red_"
         tools:layout_editor_absoluteX="20dp">
 
         <EditText
@@ -26,7 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/_49sdp"
             android:layout_marginTop="@dimen/_10sdp"
-            android:hint="@string/email"
+            android:hint="البريد الاليكتروني"
             android:importantForAutofill="yes"
             android:inputType="text"
             android:typeface="serif"
@@ -44,7 +58,7 @@
         app:boxCornerRadiusBottomStart="@dimen/_25sdp"
         android:layout_marginTop="@dimen/_10sdp"
         app:passwordToggleEnabled="true"
-        app:boxStrokeColor="@color/purple_700"
+        app:boxStrokeColor="@color/red_"
         tools:layout_editor_absoluteX="20dp">
 
         <EditText
@@ -52,24 +66,29 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/_49sdp"
             android:layout_marginTop="@dimen/_10sdp"
-            android:hint="@string/password"
+            android:hint="كلمة المرور"
             android:inputType="textWebPassword"
             tools:ignore="LabelFor"
             tools:layout_editor_absoluteX="30dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:layout_width="match_parent"
+        app:cornerRadius="@dimen/_12sdp"
+        android:layout_width="@dimen/_220sdp"
+        android:layout_gravity="center"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:onClick="login"
-        android:text="@string/login" />
+        android:text="دخول" />
 
     <com.google.android.material.button.MaterialButton
-        android:layout_width="match_parent"
+        app:cornerRadius="@dimen/_12sdp"
+        android:layout_width="@dimen/_220sdp"
+        android:layout_gravity="center"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:onClick="openRegister"
-        android:text="@string/register" />
+        android:text="تسجيل" />
 
 </LinearLayout>
+</ScrollView>

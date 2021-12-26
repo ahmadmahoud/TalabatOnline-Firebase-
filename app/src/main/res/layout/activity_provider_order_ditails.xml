@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_10sdp"
-            android:hint="@string/request_description">
+            android:hint="هل السياره بسائق ام لا ؟">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:enabled="false"
@@ -33,7 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_10sdp"
-            android:hint="@string/phone_number">
+            android:hint="ادخل رقم هاتفك">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/order_details_phone_number"
@@ -49,7 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_10sdp"
-            android:hint="@string/first_location">
+            android:hint="موقع الاستلام">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/order_details_first_location"
@@ -65,7 +65,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_10sdp"
-            android:hint="@string/last_location">
+            android:hint="موقع التسليم">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/order_details_last_location"
@@ -81,7 +81,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_10sdp"
-            android:hint="@string/date">
+            android:hint="مدة التاجير">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/order_details_date"
@@ -97,14 +97,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_10sdp"
-            android:hint="@string/time">
+            android:hint="اسم المستلم">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/order_details_time"
                 android:layout_width="match_parent"
                 android:enabled="false"
-                android:layout_height="wrap_content"
-                android:inputType="text" />
+                android:layout_height="wrap_content" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -113,7 +112,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_10sdp"
-            android:hint="@string/order_accept">
+            android:hint="قبول الطلب">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/order_details_is_accept"
@@ -129,13 +128,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_10sdp"
-            android:hint="@string/order_state">
+            app:boxStrokeWidth="@dimen/_3sdp"
+            app:boxStrokeWidthFocused="@dimen/_3sdp"
+            app:boxCornerRadiusTopEnd="@dimen/_25sdp"
+            app:boxCornerRadiusBottomStart="@dimen/_25sdp"
+            android:hint="حالة الطلب">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/order_details_state"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text" />
+                android:layout_height="wrap_content" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -144,7 +146,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_10sdp"
-                android:text="@string/finished"/>
+                android:text="هل تم الانتهاء ؟"/>
         <com.google.android.material.button.MaterialButton
             android:id="@+id/provider_order_details_accept_material_button"
             android:layout_gravity="center"
@@ -152,7 +154,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_10sdp"
             android:elevation="@dimen/_2sdp"
-            android:text="@string/accept"
+            android:text="قبول الطلب"
             android:textAllCaps="false"
             app:cornerRadius="@dimen/_10sdp" />
         <com.google.android.material.button.MaterialButton
@@ -162,7 +164,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_10sdp"
             android:elevation="@dimen/_2sdp"
-            android:text="@string/update"
+            android:text="تحديث الطلب"
             android:textAllCaps="false"
             app:cornerRadius="@dimen/_10sdp" />
     </LinearLayout>

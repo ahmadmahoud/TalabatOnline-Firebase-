@@ -16,6 +16,7 @@
             android:textSize="@dimen/_16ssp"
             android:padding="@dimen/_5sdp"
             android:textStyle="bold"
+            android:textColor="@color/red"
             android:id="@+id/item_order_tv_description"
             android:text="@string/order_description"
             android:layout_width="match_parent"
@@ -24,9 +25,10 @@
         <TextView
             android:textSize="@dimen/_14ssp"
             android:padding="@dimen/_5sdp"
+            android:textColor="@color/red_"
             android:id="@+id/item_order_tv_date"
             android:text="@string/order_date"
-            android:gravity="end"
+            android:gravity="start"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 

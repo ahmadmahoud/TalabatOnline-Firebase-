@@ -24,6 +24,7 @@ public class ProviderOrderDetailsActivity extends AppCompatActivity {
     MaterialButton buttonAccept,buttonUpdate;
     CheckBox checkBoxFinished;
     OrderData orderData;
+    String state;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +49,7 @@ public class ProviderOrderDetailsActivity extends AppCompatActivity {
         editTextLastLocation.setText(orderData.getLastLocation());
         editTextOrderDate.setText(orderData.getDate());
         editTextOrderTime.setText(orderData.getTime());
-        editTextOrderState.setEnabled(orderData.isAccept());
+        editTextOrderAccept.setEnabled(orderData.isAccept());
         editTextOrderState.setText(orderData.getState());
 
         checkAccept();
@@ -84,7 +85,7 @@ public class ProviderOrderDetailsActivity extends AppCompatActivity {
                 });
     }
     private void updateOrder() {
-        String state = editTextOrderState.getText().toString().trim();
+        state = editTextOrderState.getText().toString().trim();
         if(state.isEmpty()){
             Toast.makeText(this, "please write the State", Toast.LENGTH_SHORT).show();
             return;

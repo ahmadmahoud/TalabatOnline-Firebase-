@@ -2,6 +2,7 @@ package com.example.orderapp;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
@@ -78,6 +79,7 @@ public class UserAddOrderActivity extends AppCompatActivity {
                    public void onComplete(@NonNull Task<Void> task) {
                        if (task.isSuccessful()){
                            Toast.makeText(UserAddOrderActivity.this, "Order added Successfully", Toast.LENGTH_SHORT).show();
+                           startActivity(new Intent(UserAddOrderActivity.this , AcceptScreen.class));
                        }else {
                            errorMessage();
                        }
